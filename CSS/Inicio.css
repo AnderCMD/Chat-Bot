@@ -1,0 +1,287 @@
+/* Fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: var(--Titulos);
+}
+
+/* Variables */
+:root {
+    --Fondo-1: #F0F8FF;
+    --Fondo-2: #FFFFFF;
+    --Fondo-3: #d4e7ff;
+    --Iconos: #acb2b8;
+    --Iconos-Hover: #858b91;
+    --Activo: #6fbcff;
+    --Titulos: #292d31;
+    --Mensaje: #0088ff;
+    --Mensaje-2: #d4ebff;
+}
+
+body {
+    background-color: var(--Fondo-1);
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Header & Nav */
+
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--Fondo-2);
+    height: 100vh;
+    padding: .75em;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.10);
+}
+
+header .Logo img {
+    width: 50px;
+    height: 50px;
+}
+
+header nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header nav i {
+    margin: 1.2em 0;
+    color: var(--Iconos);
+}
+
+header nav i:hover {
+    color: var(--Iconos-Hover);
+    transition: 0.5s;
+}
+
+header .Activo {
+    color: var(--Activo);
+}
+
+button {
+    border: none;
+    background-color: var(--Fondo-2);
+    cursor: pointer;
+}
+
+img.Usuario {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Chats Busqueda */
+
+.Busqueda-Chats {
+    padding: 1em;
+    width: 25%;
+    min-height: 100vh;
+}
+
+.Busqueda-Chats .Titulo {
+    color: var(--Titulos);
+}
+
+.Busqueda-Chats .Buscar {
+    background-color: var(--Fondo-2);
+    padding: .25em 1em;
+    border-radius: 15px;
+    color: var(--Iconos-Hover);
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.10);
+}
+
+.Busqueda-Chats .Buscar input {
+    border: none;
+    padding: 1em;
+    border-radius: 15px;
+    outline: none;
+    width: 93%;
+    background-color: var(--Fondo-2);
+}
+
+.Busqueda-Chats .Chat-Preview {
+    display: flex;
+    align-items: center;
+    background-color: var(--Fondo-2);
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.10);
+}
+
+.Busqueda-Chats .Chat-Preview .Datos {
+    margin: 0 1em;
+}
+
+.Busqueda-Chats .Chat-Preview .Name-Date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Busqueda-Chats .Chat-Preview .Mensaje-Preview {
+    margin: 0 1em 0 0;
+    width: 90%;
+    height: 2.5em;
+    /* Ajusta la altura según tus preferencias */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Establece el número de líneas a mostrar */
+    -webkit-box-orient: vertical;
+}
+
+.Busqueda-Chats .Chat-Preview .Mensaje-Alerts {
+    display: flex;
+}
+
+.Busqueda-Chats .Chat-Preview p.Mensaje-Alerts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+}
+
+.Busqueda-Chats .Chat-Preview p.Notificaciones {
+    background-color: #1E90FF;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Fondo-2);
+}
+
+/* Chat */
+.Chat {
+    background-color: var(--Fondo-2);
+    width: 100%;
+    margin: 1.5em 1em 1.5em 0;
+    border-radius: 25px;
+    padding: 1em;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.10);
+}
+
+.Chat .Usuario {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1em;
+}
+
+.Chat .Usuario img {
+    margin-right: 1em;
+}
+
+.Chat .Datos {
+    display: flex;
+    align-items: center;
+
+}
+
+.Chat .Estado {
+    display: flex;
+    align-items: center;
+}
+
+.Chat .Estado-Color {
+    width: 10px;
+    height: 10px;
+    display: flex;
+    background-color: green;
+    margin: 0 .5em;
+    border-radius: 50%;
+}
+
+.Chat hr {
+    border-radius: 25px;
+    padding: .25em;
+    background-color: var(--Fondo-3);
+    border: none;
+}
+
+/* Mensajes */
+
+.ChatContainer {
+    width: 100%;
+    border-radius: 25px;
+    padding: 2em;
+    background-color: whitesmoke;
+    height: 80%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.Mensaje {
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    border-radius: 15px;
+}
+
+.MensajeEnviado {
+    background-color: var(--Mensaje);
+    text-align: right;
+    color: white;
+    width: 45%;
+    align-self: flex-end;
+}
+
+.MensajeRecibido {
+    background-color: var(--Mensaje-2);
+    text-align: left;
+    width: 45%;
+    align-self: flex-start;
+}
+
+.HoraRecibido {
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 0.3em;
+    text-align: right;
+}
+
+.HoraEnviado {
+    font-size: 0.8em;
+    color: white;
+    margin-top: 0.3em;
+    text-align: left;
+}
+
+.Control-Mensajes {
+    width: 100%;
+    background-color: var(--Mensaje-2);
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Control-Mensajes button {
+    background-color: var(--Mensaje);
+    border-radius: 50%;
+}
+
+.Control-Mensajes i {
+    color: white;
+    padding: 1em;
+}
+
+#inputMensaje {
+    border: none;
+    outline: none;
+    background-color: var(--Mensaje-2);
+    font-size: 1.1em;
+}
