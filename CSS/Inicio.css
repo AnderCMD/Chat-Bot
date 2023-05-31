@@ -285,3 +285,8 @@ img.Usuario {
     background-color: var(--Mensaje-2);
     font-size: 1.1em;
 }
+
+.Control-Mensajes button:hover {
+    background-color: #004e92;
+    transition: 0.5s;
+}
