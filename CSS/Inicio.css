@@ -166,7 +166,7 @@ img.Usuario {
 /* Chat */
 .Chat {
     background-color: var(--Fondo-2);
-    width: 100%;
+    width: 75%;
     margin: 1.5em 1em 1.5em 0;
     border-radius: 25px;
     padding: 1em;
@@ -218,7 +218,7 @@ img.Usuario {
     border-radius: 25px;
     padding: 2em;
     background-color: whitesmoke;
-    height: 80%;
+    height: 73.5vh;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -228,6 +228,8 @@ img.Usuario {
     margin-bottom: 0.5em;
     padding: 0.5em;
     border-radius: 15px;
+    width: 100%;
+    height: auto;
 }
 
 .MensajeEnviado {
@@ -284,6 +286,7 @@ img.Usuario {
     outline: none;
     background-color: var(--Mensaje-2);
     font-size: 1.1em;
+    width: 95%;
 }
 
 .Control-Mensajes button:hover {
