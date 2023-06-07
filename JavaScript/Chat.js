@@ -1,33 +1,81 @@
-function enviarMensaje() {
-    var inputMensaje = document.getElementById("inputMensaje");
-    var contenedorChat = document.getElementById("contenedorChat");
-    var mensaje = inputMensaje.value.trim();
+// Respuestas predefinidas
+var Respuestas = [
+    "¡Hola!",
+    "Entiendo lo que dices.",
+    "Eso suena interesante.",
+    "Estoy de acuerdo contigo.",
+    "¿Podrías darme más detalles?",
+    "Me gustaría saber más sobre eso.",
+    "No estoy seguro, déjame investigarlo.",
+    "¡Gracias por compartir tu opinión!",
+    "¿Has considerado otras opciones?",
+    "Creo que tienes razón.",
+    "¿En qué puedo ayudarte?"
+];
 
-    if (mensaje !== "") {
-        var elementoMensaje = document.createElement("div");
-        var elementoHora = document.createElement("div");
-        var fechaActual = new Date();
-        var hora = fechaActual.getHours();
-        var minutos = fechaActual.getMinutes();
-        var horaFormateada = hora + ":" + minutos.toString().padStart(2, '0');
+function GenerarRespuestaAleatoria(Mensaje) {
+    // Verificar el Mensaje enviado y generar respuesta congruente
+    if (Mensaje.toLowerCase().includes("hola")) {
+        return "¡Hola! ¿Cómo puedo ayudarte?";
+    } else if (Mensaje.toLowerCase().includes("gracias")) {
+        return "De nada, siempre estoy aquí para ayudar.";
+    } else if (Mensaje.toLowerCase().includes("adios") || Mensaje.toLowerCase().includes("adiós") || Mensaje.toLowerCase().includes("bye")) {
+        return "Hasta luego, que tengas un buen día.";
+    }
 
-        elementoMensaje.textContent = mensaje;
-        elementoMensaje.classList.add("Mensaje", "MensajeEnviado");
-        elementoHora.textContent = horaFormateada;
-        elementoHora.classList.add("HoraEnviado");
+    // Si no se encuentra una congruencia específica, se genera una respuesta aleatoria
+    var Indice = Math.floor(Math.random() * Respuestas.length);
+    return Respuestas[Indice];
+}
 
-        elementoMensaje.appendChild(elementoHora);
-        contenedorChat.appendChild(elementoMensaje);
+function EnviarMensaje() {
+    var InputMensaje = document.getElementById("InputMensaje");
+    var ContenedorChat = document.getElementById("ContenedorChat");
+    var Mensaje = InputMensaje.value.trim();
 
-        inputMensaje.value = "";
-        contenedorChat.scrollTo(0, contenedorChat.scrollHeight);
+    if (Mensaje !== "") {
+        // Crear Mensaje enviado
+        var ElementoMensajeEnviado = document.createElement("div");
+        var ElementoHoraEnviado = document.createElement("div");
+        var FechaActual = new Date();
+        var Hora = FechaActual.getHours();
+        var Minutos = FechaActual.getMinutes();
+        var HoraFormateada = Hora + ":" + Minutos.toString().padStart(2, "0");
+
+        ElementoMensajeEnviado.textContent = Mensaje;
+        ElementoMensajeEnviado.classList.add("Mensaje", "MensajeEnviado");
+        ElementoHoraEnviado.textContent = HoraFormateada;
+        ElementoHoraEnviado.classList.add("HoraEnviado");
+
+        ElementoMensajeEnviado.appendChild(ElementoHoraEnviado);
+        ContenedorChat.appendChild(ElementoMensajeEnviado);
+
+        // Generar Mensaje aleatorio como respuesta
+        var RespuestaAleatoria = GenerarRespuestaAleatoria(Mensaje);
+
+        // Crear Mensaje recibido
+        var ElementoMensajeRecibido = document.createElement("div");
+        var ElementoHoraRecibido = document.createElement("div");
+
+        ElementoMensajeRecibido.textContent = RespuestaAleatoria;
+        ElementoMensajeRecibido.classList.add("Mensaje", "MensajeRecibido");
+
+        // Agregar Hora al Mensaje
+        ElementoHoraRecibido.textContent = HoraFormateada;
+        ElementoHoraRecibido.classList.add("HoraRecibido");
+
+        ElementoMensajeRecibido.appendChild(ElementoHoraRecibido);
+        ContenedorChat.appendChild(ElementoMensajeRecibido);
+
+        InputMensaje.value = "";
+        ContenedorChat.scrollTo(0, ContenedorChat.scrollHeight);
     }
 }
 
-var inputMensaje = document.getElementById("inputMensaje");
-inputMensaje.addEventListener("keydown", function (event) {
+var InputMensaje = document.getElementById("InputMensaje");
+InputMensaje.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        enviarMensaje();
+        EnviarMensaje();
     }
 });

@@ -10,6 +10,29 @@
     color: var(--Titulos);
 }
 
+/* Scrolls Compatibilidad*/
+
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--Iconos);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--Iconos);
+    border-radius: 20px;
+    border: none;
+}
+
 /* Variables */
 :root {
     --Fondo-1: #F0F8FF;
@@ -34,7 +57,6 @@ body {
 
 header {
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--Fondo-2);
@@ -132,13 +154,8 @@ img.Usuario {
     margin: 0 1em 0 0;
     width: 90%;
     height: 2.5em;
-    /* Ajusta la altura según tus preferencias */
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    /* Establece el número de líneas a mostrar */
-    -webkit-box-orient: vertical;
 }
 
 .Busqueda-Chats .Chat-Preview .Mensaje-Alerts {
@@ -218,7 +235,7 @@ img.Usuario {
     border-radius: 25px;
     padding: 2em;
     background-color: whitesmoke;
-    height: 73.5vh;
+    height: 70vh;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -229,23 +246,28 @@ img.Usuario {
     padding: 0.5em;
     border-radius: 15px;
     width: 100%;
-    height: auto;
+    max-width: 100%;
+    min-height: fit-content;
+    /* Ajusta esta altura según tus necesidades */
+    overflow-wrap: break-word;
+    /* Añadimos esta propiedad para ajustar el texto */
 }
 
 .MensajeEnviado {
     background-color: var(--Mensaje);
     text-align: right;
     color: white;
-    width: 45%;
+    max-width: 48%;
     align-self: flex-end;
 }
 
 .MensajeRecibido {
     background-color: var(--Mensaje-2);
     text-align: left;
-    width: 45%;
+    max-width: 48%;
     align-self: flex-start;
 }
+
 
 .HoraRecibido {
     font-size: 0.8em;
@@ -266,8 +288,8 @@ img.Usuario {
     background-color: var(--Mensaje-2);
     padding: 0.5em 1em;
     border-radius: 25px;
+    height: 9vh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -281,15 +303,26 @@ img.Usuario {
     padding: 1em;
 }
 
-#inputMensaje {
+#InputMensaje {
     border: none;
     outline: none;
     background-color: var(--Mensaje-2);
     font-size: 1.1em;
     width: 95%;
+    height: 95%;
+    overflow-y: auto;
+    margin-right: 2em;
+    resize: none;
 }
 
 .Control-Mensajes button:hover {
     background-color: #004e92;
     transition: 0.5s;
+}
+
+.InicioConversacion {
+    display: flex;
+    justify-content: center;
+    color: gray;
+    font-weight: 400;
 }
