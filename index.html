@@ -9,7 +9,7 @@
     <!-- Titulo & Icono -->
     <title>Intellion | Chats</title>
     <link rel="shortcut icon" href="./Resources/Icons/Intellion-Logo.png" type="image/x-icon">
-    <!-- Iconos -->
+    <!-- Iconos-->
     <script src="https://kit.fontawesome.com/9ff681b2a4.js" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="./CSS/Inicio.css">
@@ -54,7 +54,8 @@
                         <p id="Hora">12:45 PM</p>
                     </div><br>
                     <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el departamento</p>
+                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
+                            departamento</p>
                         <p class="Notificaciones" id="Notificaciones">1</p>
                     </div>
                 </div>
@@ -73,7 +74,8 @@
                         <p id="Hora">12:45 PM</p>
                     </div><br>
                     <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el departamento</p>
+                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
+                            departamento</p>
                         <p class="Notificaciones" id="Notificaciones">1</p>
                     </div>
                 </div>
@@ -92,7 +94,8 @@
                         <p id="Hora">12:45 PM</p>
                     </div><br>
                     <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el departamento</p>
+                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
+                            departamento</p>
                         <p class="Notificaciones" id="Notificaciones">1</p>
                     </div>
                 </div>
@@ -111,7 +114,8 @@
                         <p id="Hora">12:45 PM</p>
                     </div><br>
                     <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el departamento</p>
+                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
+                            departamento</p>
                         <p class="Notificaciones" id="Notificaciones">1</p>
                     </div>
                 </div>
@@ -130,7 +134,8 @@
                         <p id="Hora">12:45 PM</p>
                     </div><br>
                     <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el departamento</p>
+                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
+                            departamento</p>
                         <p class="Notificaciones" id="Notificaciones">1</p>
                     </div>
                 </div>
@@ -149,7 +154,8 @@
                         <p id="Hora">12:45 PM</p>
                     </div><br>
                     <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el departamento</p>
+                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
+                            departamento</p>
                         <p class="Notificaciones" id="Notificaciones">1</p>
                     </div>
                 </div>
@@ -157,6 +163,7 @@
         </a><br>
         <!-- Fin Chat -->
     </section>
+
     <section class="Chat">
         <div class="Usuario">
             <div class="Datos">
@@ -183,8 +190,10 @@
         </div>
         <br>
         <div class="Control-Mensajes">
-            <textarea name="InputMensaje" id="InputMensaje" cols="1" rows="4" placeholder="Escribe un Mensaje"></textarea>
-            <!-- <input type="text" id="InputMensaje" placeholder="Escribe un Mensaje"> -->
+            <textarea name="InputMensaje" id="InputMensaje" cols="1" rows="4"
+                placeholder="Escribe un Mensaje"></textarea>
+            <button onclick="MostrarEmojis()"><i class="fa-solid fa-smile"></i></button>
+            <div id="EmojisContainer" class="EmojisContainer"></div>
             <button onclick="EnviarMensaje()"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </section>
@@ -192,6 +201,7 @@
     <!-- Scripts -->
     <script src="./JavaScript/Busqueda.js"></script>
     <script src="./JavaScript/Chat.js"></script>
+    <script src="./JavaScript/Emojis.js"></script>
 </body>
 
 </html>

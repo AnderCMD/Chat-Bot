@@ -204,7 +204,6 @@ img.Usuario {
 .Chat .Datos {
     display: flex;
     align-items: center;
-
 }
 
 .Chat .Estado {
@@ -268,7 +267,6 @@ img.Usuario {
     align-self: flex-start;
 }
 
-
 .HoraRecibido {
     font-size: 0.8em;
     color: gray;
@@ -291,11 +289,13 @@ img.Usuario {
     height: 9vh;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .Control-Mensajes button {
     background-color: var(--Mensaje);
     border-radius: 50%;
+    margin: 0 .25em;
 }
 
 .Control-Mensajes i {
@@ -325,4 +325,51 @@ img.Usuario {
     justify-content: center;
     color: gray;
     font-weight: 400;
+}
+
+/* Emojis */
+#EmojisContainer {
+    display: none;
+}
+
+.EmojisContainer {
+    position: absolute;
+    bottom: 125%;
+    right: 0;
+    width: 25%;
+    max-height: 120%;
+    overflow-y: auto;
+    padding: .25em;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px 5px 5px 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: top 0.3s ease-in-out;
+    margin: 1em;
+}
+
+.EmojisContainer button {
+    display: inline-block;
+    padding: .25em;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.EmojisContainer button:hover {
+    transition: transform 0.2s ease-in-out;
+    background-color: var(--Fondo-3);
+    transform: scale(1.5);
+}
+
+.CategoryButton {
+    margin-bottom: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #888;
+    text-decoration: underline;
 }

@@ -19,7 +19,11 @@ function GenerarRespuestaAleatoria(Mensaje) {
         return "¡Hola! ¿Cómo puedo ayudarte?";
     } else if (Mensaje.toLowerCase().includes("gracias")) {
         return "De nada, siempre estoy aquí para ayudar.";
-    } else if (Mensaje.toLowerCase().includes("adios") || Mensaje.toLowerCase().includes("adiós") || Mensaje.toLowerCase().includes("bye")) {
+    } else if (
+        Mensaje.toLowerCase().includes("adios") ||
+        Mensaje.toLowerCase().includes("adiós") ||
+        Mensaje.toLowerCase().includes("bye")
+    ) {
         return "Hasta luego, que tengas un buen día.";
     }
 
@@ -70,6 +74,10 @@ function EnviarMensaje() {
         InputMensaje.value = "";
         ContenedorChat.scrollTo(0, ContenedorChat.scrollHeight);
     }
+
+    // Cerrar el contenedor de emojis
+    EmojisContainer.style.display = "none";
+    EmojiContainerVisible = false;
 }
 
 var InputMensaje = document.getElementById("InputMensaje");
@@ -79,3 +87,18 @@ InputMensaje.addEventListener("keydown", function (event) {
         EnviarMensaje();
     }
 });
+
+// Obtener los elementos Chat-Preview
+var ElementosChatPreview = document.getElementsByClassName("Chat-Preview");
+
+// Obtener el elemento UsuarioActivo
+var ElementoUsuarioActivo = document.getElementById("UsuarioActivo");
+
+// Agregar evento de clic a cada elemento de vista previa de chat
+for (var i = 0; i < ElementosChatPreview.length; i++) {
+    ElementosChatPreview[i].addEventListener("click", function () {
+        var Nombre = this.querySelector("#Nombre").textContent;
+
+        ElementoUsuarioActivo.textContent = Nombre;
+    });
+}

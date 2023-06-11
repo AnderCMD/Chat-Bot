@@ -62,3 +62,27 @@ for (var i = 0; i < ElementosChatPreview.length; i++) {
     ElementoUsuarioActivo.textContent = Nombres[IndiceAleatorioUsuario];
 }
 
+// Obtener el campo de búsqueda
+var CampoBusqueda = document.getElementById('UserChat');
+
+// Obtener todos los elementos Chat-Preview
+var ElementosChatPreview = document.getElementsByClassName('Chat-Preview');
+
+// Agregar un evento de escucha al campo de búsqueda
+CampoBusqueda.addEventListener('keyup', function () {
+    var Filtro = CampoBusqueda.value.toLowerCase();
+
+    // Recorrer todos los elementos Chat-Preview
+    for (var i = 0; i < ElementosChatPreview.length; i++) {
+        var Elemento = ElementosChatPreview[i];
+        var Nombre = Elemento.querySelector('#Nombre').textContent.toLowerCase();
+        var mensaje = Elemento.querySelector('.Mensaje-Preview').textContent.toLowerCase();
+
+        // Mostrar u ocultar el Elemento según el Filtro de búsqueda
+        if (Nombre.includes(Filtro) || mensaje.includes(Filtro)) {
+            Elemento.style.display = 'flex';
+        } else {
+            Elemento.style.display = 'none';
+        }
+    }
+});
