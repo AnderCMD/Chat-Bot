@@ -12,7 +12,10 @@
     <!-- Iconos-->
     <script src="https://kit.fontawesome.com/9ff681b2a4.js" crossorigin="anonymous"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="./CSS/Inicio.css">
+    <link rel="stylesheet" href="./CSS/Default.css">
+    <link rel="stylesheet" href="./CSS/Header.css">
+    <link rel="stylesheet" href="./CSS/Busqueda-Chats.css">
+    <link rel="stylesheet" href="./CSS/Chat.css">
 </head>
 
 <body>
@@ -29,7 +32,7 @@
         </nav>
         <nav>
             <button id="Modos"><i class="fa-solid fa-sun fa-xl"></i></button>
-            <a href="#"><i class="fa-solid fa-gear fa-xl"></i></a>
+            <a href="#" onclick="BorrarConversaciones()"><i class="fa-solid fa-gear fa-xl"></i></a>
             <button id="Usuario"><img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario"></button>
         </nav>
     </header>
@@ -42,126 +45,128 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" name="UserChat" id="UserChat" placeholder="Search messages or users">
         </div><br>
-        <!-- Chat -->
-        <a href="#">
-            <div class="Chat-Preview">
-                <div class="Imagen">
-                    <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
-                </div>
-                <div class="Datos">
-                    <div class="Name-Date">
-                        <b id="Nombre">William Wright</b>
-                        <p id="Hora">12:45 PM</p>
-                    </div><br>
-                    <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
-                            departamento</p>
-                        <p class="Notificaciones" id="Notificaciones">1</p>
+        <div class="Contenedor-Chats">
+            <!-- Chat 1 -->
+            <a href="#" onclick="ObtenerNombre('Nombre1')">
+                <div class="Chat-Preview">
+                    <div class="Imagen">
+                        <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
+                    </div>
+                    <div class="Datos">
+                        <div class="Name-Date">
+                            <b id="Nombre1">William Wright</b>
+                            <p id="Hora1">12:45 PM</p>
+                        </div><br>
+                        <div class="Mensaje-Alerts">
+                            <p class="Mensaje-Preview" id="Mensaje1">¡Hola! Sí, voy a encontrarme con un amigo en el
+                                departamento</p>
+                            <p class="Notificaciones" id="Notificaciones1">1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a><br>
-        <!-- Fin Chat -->
-        <!-- Chat -->
-        <a href="#">
-            <div class="Chat-Preview">
-                <div class="Imagen">
-                    <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
-                </div>
-                <div class="Datos">
-                    <div class="Name-Date">
-                        <b id="Nombre">William Wright</b>
-                        <p id="Hora">12:45 PM</p>
-                    </div><br>
-                    <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
-                            departamento</p>
-                        <p class="Notificaciones" id="Notificaciones">1</p>
+            </a>
+            <!-- Fin Chat 1 -->
+
+            <!-- Chat 2 -->
+            <a href="#" onclick="ObtenerNombre('Nombre2')">
+                <div class="Chat-Preview">
+                    <div class="Imagen">
+                        <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
+                    </div>
+                    <div class="Datos">
+                        <div class="Name-Date">
+                            <b id="Nombre2">Martin Chavez</b>
+                            <p id="Hora2">12:45 PM</p>
+                        </div><br>
+                        <div class="Mensaje-Alerts">
+                            <p class="Mensaje-Preview" id="Mensaje2">¡Hola!</p>
+                            <p class="Notificaciones" id="Notificaciones2">1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a><br>
-        <!-- Fin Chat -->
-        <!-- Chat -->
-        <a href="#">
-            <div class="Chat-Preview">
-                <div class="Imagen">
-                    <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
-                </div>
-                <div class="Datos">
-                    <div class="Name-Date">
-                        <b id="Nombre">William Wright</b>
-                        <p id="Hora">12:45 PM</p>
-                    </div><br>
-                    <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
-                            departamento</p>
-                        <p class="Notificaciones" id="Notificaciones">1</p>
+            </a>
+            <!-- Fin Chat 2 -->
+
+            <!-- Chat 3 -->
+            <a href="#" onclick="ObtenerNombre('Nombre3')">
+                <div class="Chat-Preview">
+                    <div class="Imagen">
+                        <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
+                    </div>
+                    <div class="Datos">
+                        <div class="Name-Date">
+                            <b id="Nombre3">Karla Jimenez</b>
+                            <p id="Hora3">12:45 PM</p>
+                        </div><br>
+                        <div class="Mensaje-Alerts">
+                            <p class="Mensaje-Preview" id="Mensaje3">¡Hola!</p>
+                            <p class="Notificaciones" id="Notificaciones3">1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a><br>
-        <!-- Fin Chat -->
-        <!-- Chat -->
-        <a href="#">
-            <div class="Chat-Preview">
-                <div class="Imagen">
-                    <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
-                </div>
-                <div class="Datos">
-                    <div class="Name-Date">
-                        <b id="Nombre">William Wright</b>
-                        <p id="Hora">12:45 PM</p>
-                    </div><br>
-                    <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
-                            departamento</p>
-                        <p class="Notificaciones" id="Notificaciones">1</p>
+            </a>
+            <!-- Fin Chat 3 -->
+
+            <!-- Chat 4 -->
+            <a href="#" onclick="ObtenerNombre('Nombre4')">
+                <div class="Chat-Preview">
+                    <div class="Imagen">
+                        <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
+                    </div>
+                    <div class="Datos">
+                        <div class="Name-Date">
+                            <b id="Nombre4">Juan Fernando</b>
+                            <p id="Hora4">12:45 PM</p>
+                        </div><br>
+                        <div class="Mensaje-Alerts">
+                            <p class="Mensaje-Preview" id="Mensaje4">¡Hola!</p>
+                            <p class="Notificaciones" id="Notificaciones4">1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a><br>
-        <!-- Fin Chat -->
-        <!-- Chat -->
-        <a href="#">
-            <div class="Chat-Preview">
-                <div class="Imagen">
-                    <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
-                </div>
-                <div class="Datos">
-                    <div class="Name-Date">
-                        <b id="Nombre">William Wright</b>
-                        <p id="Hora">12:45 PM</p>
-                    </div><br>
-                    <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
-                            departamento</p>
-                        <p class="Notificaciones" id="Notificaciones">1</p>
+            </a>
+            <!-- Fin Chat 4 -->
+
+            <!-- Chat 5 -->
+            <a href="#" onclick="ObtenerNombre('Nombre5')">
+                <div class="Chat-Preview">
+                    <div class="Imagen">
+                        <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
+                    </div>
+                    <div class="Datos">
+                        <div class="Name-Date">
+                            <b id="Nombre5">Valentina Laverde</b>
+                            <p id="Hora5">12:45 PM</p>
+                        </div><br>
+                        <div class="Mensaje-Alerts">
+                            <p class="Mensaje-Preview" id="Mensaje5">¡Hola!</p>
+                            <p class="Notificaciones" id="Notificaciones5">1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a><br>
-        <!-- Fin Chat -->
-        <!-- Chat -->
-        <a href="#">
-            <div class="Chat-Preview">
-                <div class="Imagen">
-                    <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
-                </div>
-                <div class="Datos">
-                    <div class="Name-Date">
-                        <b id="Nombre">William Wright</b>
-                        <p id="Hora">12:45 PM</p>
-                    </div><br>
-                    <div class="Mensaje-Alerts">
-                        <p class="Mensaje-Preview" id="Mensaje">¡Hola! Sí, voy a encontrarme con un amigo en el
-                            departamento</p>
-                        <p class="Notificaciones" id="Notificaciones">1</p>
+            </a>
+            <!-- Fin Chat 5 -->
+
+            <!-- Chat 6 -->
+            <a href="#" onclick="ObtenerNombre('Nombre6')">
+                <div class="Chat-Preview">
+                    <div class="Imagen">
+                        <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
+                    </div>
+                    <div class="Datos">
+                        <div class="Name-Date">
+                            <b id="Nombre6">Oscar de la Renta</b>
+                            <p id="Hora6">12:45 PM</p>
+                        </div><br>
+                        <div class="Mensaje-Alerts">
+                            <p class="Mensaje-Preview" id="Mensaje6">¡Hola!</p>
+                            <p class="Notificaciones" id="Notificaciones6">1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a><br>
-        <!-- Fin Chat -->
+            </a>
+            <!-- Fin Chat 6 -->
+        </div>
     </section>
 
     <section class="Chat">
@@ -171,7 +176,7 @@
                 <div class="Nombre">
                     <b id="UsuarioActivo">William Wright</b>
                     <div class="Estado">
-                        <p>Online</p>
+                        <p id="Estado">Online</p>
                         <div class="Estado-Color"></div>
                     </div>
                 </div>

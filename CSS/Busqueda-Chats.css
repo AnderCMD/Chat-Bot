@@ -1,0 +1,88 @@
+/* Chats Busqueda */
+.Busqueda-Chats {
+    padding: 1em;
+    width: 25%;
+    min-height: 100vh;
+}
+
+.Busqueda-Chats .Titulo {
+    color: var(--Titulos);
+}
+
+.Busqueda-Chats .Buscar {
+    background-color: var(--Fondo-2);
+    padding: .25em 1em;
+    border-radius: 15px;
+    color: var(--Iconos-Hover);
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.10);
+}
+
+.Busqueda-Chats .Buscar input {
+    border: none;
+    padding: 1em;
+    border-radius: 15px;
+    outline: none;
+    width: 93%;
+    background-color: var(--Fondo-2);
+}
+
+.Contenedor-Chats {
+    padding: .75em;
+    border-radius: 1em;
+    overflow-y: auto;
+    max-height: 83.9vh;
+    display: grid;
+    grid-template-rows: auto;
+    row-gap: 1em;
+}
+
+.Busqueda-Chats .Chat-Preview {
+    display: flex;
+    align-items: center;
+    background-color: var(--Fondo-2);
+    border-radius: 15px;
+    padding: 1em;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.10);
+    width: 100%;
+    height: 100%;
+}
+
+.Busqueda-Chats .Chat-Preview .Datos {
+    margin: 0 1em;
+}
+
+.Busqueda-Chats .Chat-Preview .Name-Date {
+    display: flex;
+    justify-content: space-between;
+    width: 14.6vw;
+}
+
+.Busqueda-Chats .Chat-Preview .Mensaje-Preview {
+    margin: 0 1em 0 0;
+    width: 90%;
+    height: 2.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Busqueda-Chats .Chat-Preview .Mensaje-Alerts {
+    display: flex;
+}
+
+.Busqueda-Chats .Chat-Preview p.Mensaje-Alerts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+}
+
+.Busqueda-Chats .Chat-Preview p.Notificaciones {
+    background-color: #1E90FF;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Fondo-2);
+}

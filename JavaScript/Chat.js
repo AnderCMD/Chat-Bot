@@ -1,5 +1,5 @@
-// Respuestas predefinidas
-var Respuestas = [
+// Respuestas Aleatorias
+const Respuestas = [
     "¡Hola!",
     "Entiendo lo que dices.",
     "Eso suena interesante.",
@@ -13,8 +13,8 @@ var Respuestas = [
     "¿En qué puedo ayudarte?"
 ];
 
+// Obtener una respuesta aleatoria basada en el mensaje recibido
 function GenerarRespuestaAleatoria(Mensaje) {
-    // Verificar el Mensaje enviado y generar respuesta congruente
     if (Mensaje.toLowerCase().includes("hola")) {
         return "¡Hola! ¿Cómo puedo ayudarte?";
     } else if (Mensaje.toLowerCase().includes("gracias")) {
@@ -27,24 +27,57 @@ function GenerarRespuestaAleatoria(Mensaje) {
         return "Hasta luego, que tengas un buen día.";
     }
 
-    // Si no se encuentra una congruencia específica, se genera una respuesta aleatoria
-    var Indice = Math.floor(Math.random() * Respuestas.length);
+    const Indice = Math.floor(Math.random() * Respuestas.length);
     return Respuestas[Indice];
 }
 
+// Almacenar Conversacion
+function AlmacenarConversaciones(Conversaciones) {
+    const ConversacionesString = JSON.stringify(Conversaciones);
+    localStorage.setItem("Conversaciones", ConversacionesString);
+}
+
+// Recuperar Conversacion
+function RecuperarConversaciones() {
+    const ConversacionesString = localStorage.getItem("Conversaciones");
+    return ConversacionesString ? JSON.parse(ConversacionesString) : [];
+}
+
+// Agregar Mensaje
+function AgregarMensaje(Conversaciones, NombreConversacion, Remitente, Contenido, Hora) {
+    const Conversacion = ObtenerConversacion(Conversaciones, NombreConversacion);
+    Conversacion.push({ Remitente, Contenido, Hora });
+}
+
+// Obtener Conversacion 
+function ObtenerConversacion(Conversaciones, NombreConversacion) {
+    let Conversacion = Conversaciones.find(Conversacion => Conversacion.Nombre === NombreConversacion);
+
+    if (!Conversacion) {
+        Conversacion = { Nombre: NombreConversacion, Mensajes: [] };
+        Conversaciones.push(Conversacion);
+    }
+
+    return Conversacion.Mensajes;
+}
+
+// Enviar Mensaje
 function EnviarMensaje() {
-    var InputMensaje = document.getElementById("InputMensaje");
-    var ContenedorChat = document.getElementById("ContenedorChat");
-    var Mensaje = InputMensaje.value.trim();
+    const InputMensaje = document.getElementById("InputMensaje");
+    const ContenedorChat = document.getElementById("ContenedorChat");
+    const Mensaje = InputMensaje.value.trim();
+    const Conversaciones = RecuperarConversaciones();
+    const NombreConversacion = NombreConversacionInicial; // Reemplaza NombreConversacionInicial con el nombre de la conversación actual
+    const FechaActual = new Date();
+    const Hora = FechaActual.getHours();
+    const Minutos = FechaActual.getMinutes();
+    const HoraFormateada = `${Hora}:${Minutos.toString().padStart(2, "0")}`;
 
     if (Mensaje !== "") {
-        // Crear Mensaje enviado
-        var ElementoMensajeEnviado = document.createElement("div");
-        var ElementoHoraEnviado = document.createElement("div");
-        var FechaActual = new Date();
-        var Hora = FechaActual.getHours();
-        var Minutos = FechaActual.getMinutes();
-        var HoraFormateada = Hora + ":" + Minutos.toString().padStart(2, "0");
+        AgregarMensaje(Conversaciones, NombreConversacion, "Usuario", Mensaje, HoraFormateada);
+
+        const ElementoMensajeEnviado = document.createElement("div");
+        const ElementoHoraEnviado = document.createElement("div");
 
         ElementoMensajeEnviado.textContent = Mensaje;
         ElementoMensajeEnviado.classList.add("Mensaje", "MensajeEnviado");
@@ -54,17 +87,14 @@ function EnviarMensaje() {
         ElementoMensajeEnviado.appendChild(ElementoHoraEnviado);
         ContenedorChat.appendChild(ElementoMensajeEnviado);
 
-        // Generar Mensaje aleatorio como respuesta
-        var RespuestaAleatoria = GenerarRespuestaAleatoria(Mensaje);
+        const RespuestaAleatoria = GenerarRespuestaAleatoria(Mensaje);
+        AgregarMensaje(Conversaciones, NombreConversacion, "Asistente", RespuestaAleatoria, HoraFormateada);
 
-        // Crear Mensaje recibido
-        var ElementoMensajeRecibido = document.createElement("div");
-        var ElementoHoraRecibido = document.createElement("div");
+        const ElementoMensajeRecibido = document.createElement("div");
+        const ElementoHoraRecibido = document.createElement("div");
 
         ElementoMensajeRecibido.textContent = RespuestaAleatoria;
         ElementoMensajeRecibido.classList.add("Mensaje", "MensajeRecibido");
-
-        // Agregar Hora al Mensaje
         ElementoHoraRecibido.textContent = HoraFormateada;
         ElementoHoraRecibido.classList.add("HoraRecibido");
 
@@ -73,32 +103,93 @@ function EnviarMensaje() {
 
         InputMensaje.value = "";
         ContenedorChat.scrollTo(0, ContenedorChat.scrollHeight);
+
+        AlmacenarConversaciones(Conversaciones);
     }
 
-    // Cerrar el contenedor de emojis
+    // Ocultar Emojis al Enviar
     EmojisContainer.style.display = "none";
     EmojiContainerVisible = false;
 }
 
-var InputMensaje = document.getElementById("InputMensaje");
-InputMensaje.addEventListener("keydown", function (event) {
+// Enviar mensaje con tecla Enter
+const InputMensaje = document.getElementById("InputMensaje");
+InputMensaje.addEventListener("keydown", event => {
     if (event.key === "Enter") {
         event.preventDefault();
         EnviarMensaje();
     }
 });
 
-// Obtener los elementos Chat-Preview
-var ElementosChatPreview = document.getElementsByClassName("Chat-Preview");
+// Cargar Conversacion 
+function CargarConversacion(Conversacion) {
+    const ContenedorChat = document.getElementById("ContenedorChat");
 
-// Obtener el elemento UsuarioActivo
-var ElementoUsuarioActivo = document.getElementById("UsuarioActivo");
+    // Limpiar el contenido del chat antes de cargar la conversación
+    ContenedorChat.innerHTML = "";
 
-// Agregar evento de clic a cada elemento de vista previa de chat
-for (var i = 0; i < ElementosChatPreview.length; i++) {
-    ElementosChatPreview[i].addEventListener("click", function () {
-        var Nombre = this.querySelector("#Nombre").textContent;
+    if (Conversacion.length > 0) {
+        for (const Mensaje of Conversacion) {
+            const ElementoMensaje = document.createElement("div");
+            const ElementoHora = document.createElement("div");
 
-        ElementoUsuarioActivo.textContent = Nombre;
-    });
+            ElementoMensaje.textContent = Mensaje.Contenido;
+            ElementoMensaje.classList.add("Mensaje", Mensaje.Remitente === "Usuario" ? "MensajeEnviado" : "MensajeRecibido");
+            ElementoHora.textContent = Mensaje.Hora;
+            ElementoHora.classList.add(Mensaje.Remitente === "Usuario" ? "HoraEnviado" : "HoraRecibido");
+
+            ElementoMensaje.appendChild(ElementoHora);
+            ContenedorChat.appendChild(ElementoMensaje);
+        }
+    } else {
+        const ElementoInicioConversacion = document.createElement("div");
+        ElementoInicioConversacion.textContent = "Envía un mensaje para iniciar la conversación";
+        ElementoInicioConversacion.classList.add("InicioConversacion");
+        ContenedorChat.appendChild(ElementoInicioConversacion);
+    }
+
+    ContenedorChat.scrollTo(0, ContenedorChat.scrollHeight);
 }
+
+
+// Obtener el nombre y cargar la conversación correspondiente
+let NombreConversacionInicial = ""; // Variable global para almacenar el nombre de la conversación inicial
+
+function ObtenerNombre(NombreID) {
+    let NombreElemento = document.getElementById(NombreID);
+    let Nombre = NombreElemento.textContent.trim(); // Eliminar espacios en blanco al inicio y al final
+
+    // Asignar el valor de Nombre al elemento UsuarioActivo
+    let UsuarioActivoElemento = document.getElementById("UsuarioActivo");
+    UsuarioActivoElemento.textContent = Nombre;
+
+    // Asignar el valor de Nombre a la variable NombreConversacionInicial
+    NombreConversacionInicial = Nombre;
+
+    // Llamar a la función para cargar la conversación correspondiente al nombre obtenido
+    CargarConversacion(ObtenerConversacion(RecuperarConversaciones(), NombreConversacionInicial));
+
+    console.log("Nombre de la conversación:", Nombre);
+    return Nombre;
+}
+
+
+// Conversacion Inicial
+const Conversaciones = RecuperarConversaciones();
+NombreConversacionInicial = ObtenerNombre("Nombre1"); // Reemplaza "Nombre1" con el ID correspondiente al primer chat
+const ConversacionInicial = ObtenerConversacion(Conversaciones, NombreConversacionInicial);
+CargarConversacion(ConversacionInicial);
+
+// !-----------------------------------------------------------------------
+// ! ADVERTENCIA - Borra todas las conversaciones existentes - ADVERTENCIA
+
+// ? Al dar click en Settings en la barra de navegacion de la izquierda
+// ? Se borraran todas las conversaciones existentes
+
+function BorrarConversaciones() {
+    localStorage.removeItem("Conversaciones");
+    const ContenedorChat = document.getElementById("ContenedorChat");
+    ContenedorChat.innerHTML = "";
+}
+
+// !-----------------------------------------------------------------------

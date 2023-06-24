@@ -1,0 +1,68 @@
+/* Fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: var(--Titulos);
+}
+
+/* Scrolls Compatibilidad*/
+
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--Iconos);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--Iconos);
+    border-radius: 20px;
+    border: none;
+}
+
+/* Variables */
+:root {
+    --Fondo-1: #F0F8FF;
+    --Fondo-2: #FFFFFF;
+    --Fondo-3: #d4e7ff;
+    --Iconos: #acb2b8;
+    --Iconos-Hover: #858b91;
+    --Activo: #6fbcff;
+    --Titulos: #292d31;
+    --Mensaje: #0088ff;
+    --Mensaje-2: #d4ebff;
+}
+
+body {
+    background-color: var(--Fondo-1);
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    border: none;
+    background-color: var(--Fondo-2);
+    cursor: pointer;
+}
+
+img.Usuario {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
