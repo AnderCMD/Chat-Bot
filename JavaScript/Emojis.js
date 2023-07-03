@@ -25,6 +25,3 @@ function MostrarEmojis() {
         EmojiContainerVisible = true;
     }
 }
-
-const BotonEmojis = document.getElementById('MostrarEmojis');
-BotonEmojis.addEventListener('click', MostrarEmojis);

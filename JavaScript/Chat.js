@@ -31,10 +31,21 @@ function GenerarRespuestaAleatoria(Mensaje) {
     return Respuestas[Indice];
 }
 
-// Almacenar Conversacion
+// Almacenar Conversaciones
 function AlmacenarConversaciones(Conversaciones) {
     const ConversacionesString = JSON.stringify(Conversaciones);
     localStorage.setItem("Conversaciones", ConversacionesString);
+
+    // Almacenar el último mensaje de cada conversación
+    const UltimosMensajes = Conversaciones.map(conversacion => {
+        const UltimoMensaje = conversacion.Mensajes[conversacion.Mensajes.length - 1];
+        return {
+            Nombre: conversacion.Nombre,
+            UltimoMensaje: UltimoMensaje ? { Hora: UltimoMensaje.Hora, Mensaje: UltimoMensaje.Contenido } : null
+        };
+    });
+    const UltimosMensajesString = JSON.stringify(UltimosMensajes);
+    localStorage.setItem("UltimosMensajes", UltimosMensajesString);
 }
 
 // Recuperar Conversacion
@@ -105,6 +116,7 @@ function EnviarMensaje() {
         ContenedorChat.scrollTo(0, ContenedorChat.scrollHeight);
 
         AlmacenarConversaciones(Conversaciones);
+        ActualizarElementosHTML();
     }
 
     // Ocultar Emojis al Enviar
@@ -151,7 +163,6 @@ function CargarConversacion(Conversacion) {
     ContenedorChat.scrollTo(0, ContenedorChat.scrollHeight);
 }
 
-
 // Obtener el nombre y cargar la conversación correspondiente
 let NombreConversacionInicial = ""; // Variable global para almacenar el nombre de la conversación inicial
 
@@ -169,15 +180,39 @@ function ObtenerNombre(NombreID) {
     // Llamar a la función para cargar la conversación correspondiente al nombre obtenido
     CargarConversacion(ObtenerConversacion(RecuperarConversaciones(), NombreConversacionInicial));
 
-    console.log("Nombre de la conversación:", Nombre);
     return Nombre;
 }
 
+// Obtener el último mensaje de cada conversación
+function ObtenerUltimosMensajes() {
+    const UltimosMensajesString = localStorage.getItem("UltimosMensajes");
+    return UltimosMensajesString ? JSON.parse(UltimosMensajesString) : [];
+}
+
+// Función para actualizar los elementos HTML con el último mensaje
+function ActualizarElementosHTML() {
+    const UltimosMensajes = ObtenerUltimosMensajes();
+
+    for (let i = 0; i < UltimosMensajes.length; i++) {
+        const NombreConversacion = UltimosMensajes[i].Nombre;
+        const UltimoMensaje = UltimosMensajes[i].UltimoMensaje;
+
+        // Actualizar los elementos HTML correspondientes
+        const HoraElemento = document.getElementById(`Hora${i + 1}`);
+        const MensajeElemento = document.getElementById(`Mensaje${i + 1}`);
+
+        if (HoraElemento && MensajeElemento) {
+            HoraElemento.textContent = UltimoMensaje ? UltimoMensaje.Hora : "No hay mensajes";
+            MensajeElemento.textContent = UltimoMensaje ? UltimoMensaje.Mensaje : "No hay mensajes";
+        }
+    }
+}
 
 // Conversacion Inicial
 const Conversaciones = RecuperarConversaciones();
 NombreConversacionInicial = ObtenerNombre("Nombre1"); // Reemplaza "Nombre1" con el ID correspondiente al primer chat
 const ConversacionInicial = ObtenerConversacion(Conversaciones, NombreConversacionInicial);
+ActualizarElementosHTML();
 CargarConversacion(ConversacionInicial);
 
 // !-----------------------------------------------------------------------
