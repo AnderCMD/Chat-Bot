@@ -1,4 +1,4 @@
-// Respuestas Aleatorias
+// * Respuestas Aleatorias
 const Respuestas = [
     "¡Hola!",
     "Entiendo lo que dices.",
@@ -13,7 +13,7 @@ const Respuestas = [
     "¿En qué puedo ayudarte?"
 ];
 
-// Obtener una respuesta aleatoria basada en el mensaje recibido
+// * Obtener una respuesta aleatoria basada en el mensaje recibido
 function GenerarRespuestaAleatoria(Mensaje) {
     if (Mensaje.toLowerCase().includes("hola")) {
         return "¡Hola! ¿Cómo puedo ayudarte?";
@@ -31,7 +31,7 @@ function GenerarRespuestaAleatoria(Mensaje) {
     return Respuestas[Indice];
 }
 
-// Almacenar Conversaciones
+// * Almacenar Conversaciones
 function AlmacenarConversaciones(Conversaciones) {
     const ConversacionesString = JSON.stringify(Conversaciones);
     localStorage.setItem("Conversaciones", ConversacionesString);
@@ -48,19 +48,19 @@ function AlmacenarConversaciones(Conversaciones) {
     localStorage.setItem("UltimosMensajes", UltimosMensajesString);
 }
 
-// Recuperar Conversacion
+// * Recuperar Conversacion
 function RecuperarConversaciones() {
     const ConversacionesString = localStorage.getItem("Conversaciones");
     return ConversacionesString ? JSON.parse(ConversacionesString) : [];
 }
 
-// Agregar Mensaje
+// * Agregar Mensaje
 function AgregarMensaje(Conversaciones, NombreConversacion, Remitente, Contenido, Hora) {
     const Conversacion = ObtenerConversacion(Conversaciones, NombreConversacion);
     Conversacion.push({ Remitente, Contenido, Hora });
 }
 
-// Obtener Conversacion 
+// * Obtener Conversacion 
 function ObtenerConversacion(Conversaciones, NombreConversacion) {
     let Conversacion = Conversaciones.find(Conversacion => Conversacion.Nombre === NombreConversacion);
 
@@ -72,7 +72,7 @@ function ObtenerConversacion(Conversaciones, NombreConversacion) {
     return Conversacion.Mensajes;
 }
 
-// Enviar Mensaje
+// * Enviar Mensaje
 function EnviarMensaje() {
     const InputMensaje = document.getElementById("InputMensaje");
     const ContenedorChat = document.getElementById("ContenedorChat");
@@ -133,7 +133,7 @@ InputMensaje.addEventListener("keydown", event => {
     }
 });
 
-// Cargar Conversacion 
+// * Cargar Conversacion 
 function CargarConversacion(Conversacion) {
     const ContenedorChat = document.getElementById("ContenedorChat");
 
@@ -163,7 +163,7 @@ function CargarConversacion(Conversacion) {
     ContenedorChat.scrollTo(0, ContenedorChat.scrollHeight);
 }
 
-// Obtener el nombre y cargar la conversación correspondiente
+// * Obtener el nombre y cargar la conversación correspondiente
 let NombreConversacionInicial = ""; // Variable global para almacenar el nombre de la conversación inicial
 
 function ObtenerNombre(NombreID) {
@@ -183,13 +183,13 @@ function ObtenerNombre(NombreID) {
     return Nombre;
 }
 
-// Obtener el último mensaje de cada conversación
+// * Obtener el último mensaje de cada conversación
 function ObtenerUltimosMensajes() {
     const UltimosMensajesString = localStorage.getItem("UltimosMensajes");
     return UltimosMensajesString ? JSON.parse(UltimosMensajesString) : [];
 }
 
-// Función para actualizar los elementos HTML con el último mensaje
+// * Función para actualizar los elementos HTML con el último mensaje
 function ActualizarElementosHTML() {
     const UltimosMensajes = ObtenerUltimosMensajes();
 
