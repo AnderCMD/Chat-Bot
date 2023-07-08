@@ -2,7 +2,8 @@
 .Chat {
     background-color: var(--Fondo-2);
     width: 75%;
-    margin: 1.5em 1em 1.5em 0;
+    height: 100%;
+    margin: 1.5em 1em 1.5em 0em;
     border-radius: 25px;
     padding: 1em;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.10);
@@ -161,13 +162,13 @@
     position: absolute;
     bottom: 125%;
     right: 0;
-    width: 25%;
+    width: 30%;
     max-height: 120%;
     overflow-y: auto;
     padding: .25em;
     background-color: #fff;
     border: 1px solid #ccc;
-    border-radius: 15px 5px 5px 15px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 999;
     transition: top 0.3s ease-in-out;
@@ -175,7 +176,8 @@
 }
 
 .EmojisContainer button {
-    display: inline-block;
+    display: flexbox;
+    flex-direction: column;
     padding: .25em;
     font-size: 16px;
     cursor: pointer;
@@ -197,4 +199,28 @@
     font-size: 16px;
     color: #888;
     text-decoration: underline;
+}
+
+/* Medias Querys */
+
+@media (max-width: 576px) {
+    .Chat img.Usuario {
+        display: none;
+    }
+
+    .EmojisContainer {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .EmojisContainer {
+        width: 700%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .EmojisContainer {
+        width: 50%;
+    }
 }

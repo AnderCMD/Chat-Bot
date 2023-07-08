@@ -8,7 +8,7 @@
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     color: var(--Titulos);
-    transition: all 0.5s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 /* Scrolls Compatibilidad*/
@@ -52,7 +52,7 @@ body {
     background-color: var(--Fondo-1);
     min-height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 button {
@@ -66,4 +66,34 @@ img.Usuario {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.Oculto {
+    display: none;
+}
+
+/* Medias Querys */
+
+@media (max-width: 768px) {
+    html {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 1700px) {
+    html {
+        font-size: 0.9rem;
+    }
 }

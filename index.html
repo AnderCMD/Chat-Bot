@@ -25,8 +25,8 @@
         </div>
         <nav>
             <a href="#"><i class="fa-solid fa-pen fa-xl"></i></a>
-            <a href="#"><i class="fa-solid fa-user-group fa-xl"></i></a>
-            <a href="#"><i class="fa-solid fa-comment icon-active fa-xl Activo"></i></a>
+            <a href="#" onclick="OcultarContactos()"><i id="ContactosBoton" class="fa-solid fa-user-group fa-xl Activo"></i></a>
+            <a href="#" onclick="OcultarChat()"><i id="ChatsBoton" class="fa-solid fa-comment icon-active fa-xl Activo"></i></a>
             <a href="#"><i class="fa-solid fa-bell fa-xl"></i></a>
             <a href="#"><i class="fa-solid fa-table-columns fa-xl"></i></a>
         </nav>
@@ -37,7 +37,7 @@
         </nav>
     </header>
 
-    <section class="Busqueda-Chats">
+    <section class="Busqueda-Chats" id="BusquedaChats">
         <div class="Titulo">
             <h2>Chats</h2>
         </div><br>
@@ -168,7 +168,7 @@
         </div>
     </section>
 
-    <section class="Chat">
+    <section class="Chat" id="ChatContenedor">
         <div class="Usuario">
             <div class="Datos">
                 <img class="Usuario" src="./Resources/Icons/Perfil-User.png" alt="Usuario">
@@ -206,6 +206,7 @@
     <script src="./JavaScript/Busqueda.js"></script>
     <script src="./JavaScript/Chat.js"></script>
     <script src="./JavaScript/Emojis.js"></script>
+    <script src="./JavaScript/Desplegable.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 /* Chats Busqueda */
 .Busqueda-Chats {
     padding: 1em;
-    width: 25%;
-    min-height: 100vh;
+    max-width: 25%;
+    min-height: 100%;
 }
 
 .Busqueda-Chats .Titulo {
@@ -10,6 +10,8 @@
 }
 
 .Busqueda-Chats .Buscar {
+    display: flex;
+    align-items: center;
     background-color: var(--Fondo-2);
     padding: .25em 1em;
     border-radius: 15px;
