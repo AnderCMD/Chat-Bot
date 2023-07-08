@@ -84,6 +84,13 @@ function EnviarMensaje() {
     const Minutos = FechaActual.getMinutes();
     const HoraFormateada = `${Hora}:${Minutos.toString().padStart(2, "0")}`;
 
+    //Estado Activo
+    const EstadoElemento = document.getElementById('Estado');
+    const EstadoColorElemento = document.getElementById('EstadoColor');
+    EstadoElemento.textContent = 'Activo';
+    EstadoColorElemento.classList.remove('Estado-Inactivo');
+    EstadoColorElemento.classList.add('Estado-Activo');
+
     if (Mensaje !== "") {
         AgregarMensaje(Conversaciones, NombreConversacion, "Usuario", Mensaje, HoraFormateada);
 
@@ -136,6 +143,12 @@ InputMensaje.addEventListener("keydown", event => {
 // * Cargar Conversacion 
 function CargarConversacion(Conversacion) {
     const ContenedorChat = document.getElementById("ContenedorChat");
+
+    //Estado Inactivo
+    const EstadoElemento = document.getElementById('Estado');
+    const EstadoColorElemento = document.getElementById('EstadoColor');
+    EstadoElemento.textContent = 'Inactivo';
+    EstadoColorElemento.classList.add('Estado-Inactivo');
 
     // Limpiar el contenido del chat antes de cargar la conversación
     ContenedorChat.innerHTML = "";
@@ -192,21 +205,34 @@ function ObtenerUltimosMensajes() {
 // * Función para actualizar los elementos HTML con el último mensaje
 function ActualizarElementosHTML() {
     const UltimosMensajes = ObtenerUltimosMensajes();
+    const Conversaciones = RecuperarConversaciones();
 
-    for (let i = 0; i < UltimosMensajes.length; i++) {
-        const NombreConversacion = UltimosMensajes[i].Nombre;
-        const UltimoMensaje = UltimosMensajes[i].UltimoMensaje;
+    for (let i = 1; i <= 6; i++) {
+        const NombreConversacion = document.getElementById(`Nombre${i}`).textContent.trim();
+        const NotificacionElemento = document.getElementById(`Notificaciones${i}`);
+        const Conversacion = Conversaciones.find(conversacion => conversacion.Nombre === NombreConversacion);
+        const UltimoMensaje = UltimosMensajes.find(mensaje => mensaje.Nombre === NombreConversacion)?.UltimoMensaje;
 
         // Actualizar los elementos HTML correspondientes
-        const HoraElemento = document.getElementById(`Hora${i + 1}`);
-        const MensajeElemento = document.getElementById(`Mensaje${i + 1}`);
+        const HoraElemento = document.getElementById(`Hora${i}`);
+        const MensajeElemento = document.getElementById(`Mensaje${i}`);
 
         if (HoraElemento && MensajeElemento) {
-            HoraElemento.textContent = UltimoMensaje ? UltimoMensaje.Hora : "No hay mensajes";
-            MensajeElemento.textContent = UltimoMensaje ? UltimoMensaje.Mensaje : "No hay mensajes";
+            if (UltimoMensaje) {
+                HoraElemento.textContent = UltimoMensaje.Hora;
+                MensajeElemento.textContent = UltimoMensaje.Mensaje;
+                NotificacionElemento.style.display = 'flex'
+                NotificacionElemento.textContent = "1"
+            } else {
+                HoraElemento.textContent = "";
+                MensajeElemento.textContent = "";
+                NotificacionElemento.style.display = 'none'
+            }
         }
     }
 }
+
+// Aun no existe algun mensaje
 
 // Conversacion Inicial
 const Conversaciones = RecuperarConversaciones();
