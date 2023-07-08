@@ -225,6 +225,7 @@ function BorrarConversaciones() {
     localStorage.removeItem("Conversaciones");
     const ContenedorChat = document.getElementById("ContenedorChat");
     ContenedorChat.innerHTML = "";
+    location.reload();
 }
 
 // !-----------------------------------------------------------------------
