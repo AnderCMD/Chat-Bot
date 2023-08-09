@@ -1,4 +1,4 @@
-# Chat Interface
+# Chat Bot
 
 _Desafio tecnico por parte de Intellion_
 
@@ -6,7 +6,7 @@ _Desafio tecnico por parte de Intellion_
 
 _Para visualizar el sitio web presione el siguiente link_
 
-**[Visualizar](https://andercmd.github.io/Chat-Interface/)**
+**[Visualizar](https://andercmd.github.io/Chat-Bot/)**
 
 ## Construido con 🛠️
 
